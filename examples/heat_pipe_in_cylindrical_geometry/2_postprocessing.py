@@ -7,25 +7,34 @@ The objective of this example is to import the output results and plot the profi
 """
 
 ########################################################################################
+# global directory path
+path = '/home/victor/Desktop/toughio/examples/heat_pipe_in_cylindrical_geometry/'
+# original results from the repository
+# directory = path
+# results by me
+directory = path + 'by_me_eos3/'
+
+########################################################################################
 # Here, we assume that the simulation's output have been written in the file "OUTPUT". To import the results, we use the function :func:`toughio.read_output`. The variable `outputs` is a list with three :class:`toughio.Output` corresponding to the three time steps requested in the preprocessing example. In this example, we want to look at the last time step (index -1).
 
 import numpy as np
 import toughio
 
-outputs = toughio.read_output("OUTPUT")
+outputs = toughio.read_output(directory + "OUTPUT")
 output = outputs[-1]
 
-t = output.data["T"]
-p = output.data["P"]
-sl = output.data["SL"]
-xm = output.data["XAIRG"]
+# TOUGH3 has 'TEMP', 'PRES', 'SAT_L', 'X_AIR_G' - while TOUGH2 has 'T', 'P', 'SL', 'X_AIR_G'
+t = output.data["TEMP"]
+p = output.data["PRES"]
+sl = output.data["SAT_L"]
+xm = output.data["X_AIR_G"]
 
 ########################################################################################
 
 ########################################################################################
 # It is well known that for the stated conditions (1-D radial geometry, homogeneous medium, uniform initial conditions, and a constant-rate line source) the problem has a similarity solution: The partial differential equations for this complex two-phase flow problem can be rigorously transformed into a set of ordinary differential equations in the variable :math:`Z = R/\sqrt{t}`, which can be easily solved to any degree of accuracy desired by means of one-dimensional numerical integration (O'Sullivan, 1981). Comparison of TOUGH2 simulations with the semi-analytical similarity solution has shown excellent agreement (Doughty and Pruess, 1992). To define such variable, we first need to import the mesh 
 
-mesh = toughio.read_mesh("mesh.pickle")
+mesh = toughio.read_mesh(directory + "mesh.pickle")
 R = np.log(mesh.centers[:, 0] / (output.time) ** 0.5)
 
 ########################################################################################
@@ -58,5 +67,7 @@ fig.legend(
     bbox_transform=ax1.transAxes,
     frameon=False,
 )
+
+fig.savefig(directory + 'result.png')
 
 ########################################################################################

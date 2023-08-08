@@ -20,7 +20,7 @@ This example briefly shows how to import TOUGH output file using :mod:`toughio` 
 import toughio
 
 mesh = toughio.read_mesh("mesh.pickle")
-mesh.read_output("OUTPUT_ELEME.csv", time_step=-1)
+mesh.read_output("OUTPUT_ELEME_victor.csv", time_step=-1)
 
 ########################################################################################
 

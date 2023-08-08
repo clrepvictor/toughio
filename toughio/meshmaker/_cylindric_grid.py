@@ -24,6 +24,7 @@ class CylindricMesh(Mesh):
         super(CylindricMesh, self).__init__(*args, **kwargs)
         self._dr = dr
         self._dz = dz[::-1]  # From top to bottom
+        # self._dz = dz
         self._layer = layer
 
     def _get_areas_heights(self):
@@ -119,6 +120,14 @@ def cylindric_grid(dr, dz, origin_z=None, layer=False, material="dfalt"):
         layer=layer,
         material=material,
     )
+
+    # mesh = structured_grid(
+    #     dr,
+    #     dz,
+    #     origin=[0.0, -1500.0],
+    #     layer=layer,
+    #     material=material,
+    # )
 
     return CylindricMesh(
         dr,
