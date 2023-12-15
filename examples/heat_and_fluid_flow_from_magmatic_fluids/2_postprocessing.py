@@ -233,7 +233,7 @@ elif plot_with=='matplotlib':
 
     # Read the output produced by TOUGH3
 
-    output_path = '/home/victor/Desktop/toughio/examples/heat_and_fluid_flow_from_magmatic_fluids/2_injection/'
+    output_path = '/home/victor/Desktop/toughio/examples/heat_and_fluid_flow_from_magmatic_fluids/2_injection/working_try_4/'
     output_file = 'OUTPUT_ELEME.csv'
     output_filepath = output_path + output_file
 

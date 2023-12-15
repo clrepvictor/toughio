@@ -69,7 +69,7 @@ parameters['default'] = {
 
 parameters['options'] = {
     'n_cycle': 9999,                    # maximum number of time steps
-    'n_cycle_print': 9999,              # printout for every multiple of this number
+    'n_cycle_print': 4,              # printout for every multiple of this number
     't_ini': 0.0,                       # starting time of the simulation
     't_max': 1230.0 * 60.0,             # time in seconds at which the simulation stops
     't_steps': 0.5 * 60.0,              # length of the time step in seconds
@@ -83,7 +83,7 @@ parameters['options'] = {
 parameters['extra_options'] = {
     1: 1,
     7: 1,
-    12: 0,                              # 2: step rate capability for time dependent generation data
+    12: 2,                              # 2: step rate capability for time dependent generation data
     13: 1,
     16: 4,
     21: 8,
@@ -101,10 +101,10 @@ parameters['generators'] = [
     {
         'label': label,
         'type': 'COM1',
-        # 'times': [0.0 * uc1, 120.0 * uc1, 240.0 * uc1, 360.0 * uc1, 480.0 * uc1, 600.0 * uc1, 720.0 * uc1, 1230.0 * uc1], # optionally the last time can be infinite, as long as I stop the simulation at the right time, otherwise it runs forever
-        # 'rates': [(1.e-1) * uc2, 15.0 * uc2, 30.0 * uc2, 45.0 * uc2, 60.0 * uc2, 75.0 * uc2, (1.e-1) * uc2, 0.0 * uc2],
-        'times': [0.0 * uc1, 120.0 * uc1, 720.0 * uc1, 721.0 * uc1, 1230.0 * uc1],
-        'rates': [(1.e-1) * uc2, (1.e-1) * uc2, 75.0 * uc2, (1.e-1) * uc2, (1.e-1) * uc2]
+        'times': [0.0 * uc1, 120.0 * uc1, 240.0 * uc1, 360.0 * uc1, 480.0 * uc1, 600.0 * uc1, 720.0 * uc1, 1230.0 * uc1], # optionally the last time can be infinite, as long as I stop the simulation at the right time, otherwise it runs forever
+        'rates': [(1.e-1) * uc2, 15.0 * uc2, 30.0 * uc2, 45.0 * uc2, 60.0 * uc2, 75.0 * uc2, (1.e-1) * uc2, 0.0 * uc2],
+        # 'times': [0.0 * uc1, 120.0 * uc1, 720.0 * uc1, 721.0 * uc1, 1230.0 * uc1],
+        # 'rates': [(1.e-1) * uc2, (1.e-1) * uc2, 75.0 * uc2, (1.e-1) * uc2, (1.e-1) * uc2]
     },
 ]
 
@@ -116,9 +116,9 @@ with open(path_folder + filename, 'wb') as f:
 
 # 4) CUSTOMIZE THE OUPUT
 # generate pressure solution output every x minutes
-times_array = np.linspace(0.0, 1230.0, 616)
-y = 60.0 # from minutes to seconds
-parameters['times'] = [x * y for x in times_array]
+# times_array = np.linspace(0.0, 1230.0, 616)
+# y = 60.0 # from minutes to seconds
+# parameters['times'] = [x * y for x in times_array]
 
 # variables to print
 parameters['output'] = {

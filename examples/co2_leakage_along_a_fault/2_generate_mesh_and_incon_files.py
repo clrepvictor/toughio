@@ -47,21 +47,21 @@ mesh.extrude_to_3d(height=1.0, axis=1)
 # TOUGH does not use any geometrical coordinate system and assumes that the line connecting a cell with its neighbor is orthogonal to their common interface. :mod:`toughio` provides a mesh property that measures the quality of a cell as the average absolute cosine angle between the line connecting a cell with its neighbor and the normal vector of the common interface.
 # The mesh used in this example is of rather good quality. Bad quality cells are located at the boundaries of the model and mostly belong to the material `"BOUND"`. As this material is only used to impose Dirichlet boundary conditions in TOUGH, these bad quality cells will not impact the simulation outputs.
 
-import pyvista
-pyvista.set_plot_theme("document")
-
-p = pyvista.Plotter(window_size=(800, 800))
-p.add_mesh(
-    mesh=mesh.to_pyvista(),
-    scalars=mesh.qualities,
-    scalar_bar_args={"title": "Average cell quality"},
-    clim=(0.0, 1.0),
-    cmap="RdBu",
-    show_scalar_bar=True,
-    show_edges=True,
-)
-p.view_xz()
-p.show()
+# import pyvista
+# pyvista.set_plot_theme("document")
+#
+# p = pyvista.Plotter(window_size=(800, 800))
+# p.add_mesh(
+#     mesh=mesh.to_pyvista(),
+#     scalars=mesh.qualities,
+#     scalar_bar_args={"title": "Average cell quality"},
+#     clim=(0.0, 1.0),
+#     cmap="RdBu",
+#     show_scalar_bar=True,
+#     show_edges=True,
+# )
+# p.view_xz()
+# p.show()
 
 ########################################################################################
 

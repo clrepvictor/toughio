@@ -26,7 +26,9 @@ plt.rcParams['font.family'] = 'serif'
 # Plotting function
 
 # Read the output produced by TOUGH3
-filepath = 'OUTPUT_ELEME.csv'
+path = '/home/victor/Desktop/toughio/examples/1D_fluid_flow_4_HM1/'
+
+filepath = path + 'OUTPUT_ELEME.csv'
 
 ele_raw = pd.read_csv(filepath, index_col=False, usecols=[0])
 ids_ele1 = ele_raw[ele_raw.values == '             A11 0'].index.values
@@ -157,7 +159,7 @@ def plot_pres_evol(time_array, dist_array, flow_rate, pres_mat, scaling_time = 3
 # flow_rate = injection_protocol(flow_rate, time_array, inj_times, inj_rates) * (1000 * 60) # flow rate from m³/s to L/min
 
 # Load injection protocol (from generation rate in output file)
-filepath = 'OUTPUT_GENER.csv'
+filepath = path + 'OUTPUT_GENER.csv'
 
 """
 Uncomment if necessary to show also for flow rate data ...
